@@ -16,3 +16,26 @@ function avg(ary) {
   }
   return total / len;
 }
+
+// get longest str in str ary
+function longest(strAry) {
+  let len = strAry.length;
+  let max = 0;
+  for (let i = 0; i < len; i++) {
+    if (strAry[i].length > max) {
+      max = strAry[i].length;
+    }
+  }
+}
+
+// recursions
+function rec(n) {
+  let i = 1;
+  if (n <= 10) {
+    return;
+  } else {
+    console.log(i);
+    i++;
+    rec(i);
+  }
+}
