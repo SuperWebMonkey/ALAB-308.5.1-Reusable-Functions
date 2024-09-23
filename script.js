@@ -29,13 +29,14 @@ function longest(strAry) {
 }
 
 // recursions
-function rec(n) {
-  let i = 1;
-  if (n <= 10) {
+function rec(n, i) {
+  if (i > n) {
     return;
   } else {
     console.log(i);
     i++;
-    rec(i);
+    rec(n, i);
   }
 }
+
+rec(10, 1);
