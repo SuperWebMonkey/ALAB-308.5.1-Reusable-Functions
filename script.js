@@ -122,3 +122,65 @@ console.log("total:", sumOfAges);
 
 const average = sumOfAges / len;
 console.log("average:", average);
+
+/**
+ *
+ * Part 3 - Thinking Critically
+ *
+ */
+function manipObj(obj) {
+  if (!obj.hasOwnProperty("age")) {
+    obj.age = 0;
+  }
+
+  obj["age"] += 1;
+
+  const copy = { ...obj };
+  copy["updated_at"] = new Date();
+
+  return copy;
+}
+
+function byRef(obj) {
+  if (!obj.hasOwnProperty("age")) {
+    obj.age = 0;
+  }
+
+  obj["age"] += 1;
+
+  const copy = obj;
+  copy["updated_at"] = new Date();
+
+  return copy;
+}
+
+const obj = { name: "peter", age: 25 };
+// const obj2 = { name: "melissa" };
+
+const newObj = byRef(obj); // manipObj(obj);
+
+console.log("new object:", newObj, "\nold object:", obj);
+
+// using setTime function
+const newTime = new Date(2023, 0, 1);
+// console.log(newTime);
+newObj.updated_at.setTime(newTime);
+
+// Since the newObj references the old, updated_at is also changed
+console.log("check date for new obj:", newObj.updated_at);
+console.log("check date for old obj:", obj.updated_at);
+
+// to remediate this, the ... can be used to pass by value
+// to the newObj
+const obj2 = { name: "Mahoney", age: 40 };
+
+const newObj2 = manipObj(obj2);
+
+const newTime2 = new Date(2024, 5, 5);
+newObj2.updated_at.setTime(newTime2);
+
+console.log("Obj 2:", obj2);
+console.log("New Obj 2:", newObj2);
+
+// The old object is not affected if the spread operator is used
+// to create the new obj.
